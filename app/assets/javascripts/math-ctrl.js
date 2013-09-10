@@ -1,0 +1,3 @@
+function MathCtrl($scope) {
+
+}

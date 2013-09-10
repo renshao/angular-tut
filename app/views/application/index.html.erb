@@ -1,0 +1,46 @@
+<div ng-controller="ExpenseCtrl">
+  <h1>My weekly expenses</h1>
+
+  <table>
+    <tr ng-repeat="transaction in transactions" ng-controller="TransactionItemCtrl">
+      <td>
+        <span ng-hide="transaction.editing">
+          {{transaction.description}}
+        </span>
+        <span ng-show="transaction.editing">
+          <input ng-model="transaction.description">
+        </span>
+      </td>
+
+      <td>
+        <span ng-hide="transaction.editing">
+          {{transaction.amount}}
+        </span>
+        <span ng-show="transaction.editing">
+          <input ng-model="transaction.amount" type="number">
+        </span>
+      </td>
+
+      <td>
+        <span ng-hide="transaction.editing">
+          {{transaction.category}}
+        </span>
+        <span ng-show="transaction.editing">
+          <select ng-model="transaction.category">
+            <option value="grocery">Grocery</option>
+            <option value="transport">Transport</option>
+            <option value="coffee">Coffee</option>
+          </select>
+        </span>
+      </td>
+      <td>
+        <button ng-click="edit(transaction)" ng-hide="transaction.editing">Edit</button>
+        <button ng-click="save(transaction)" ng-show="transaction.editing">Save</button>
+        <button ng-click="delete(transaction)">Delete</button>
+      </td>
+    </tr>
+  </table>
+
+  <button ng-click="add()">Add</button>
+
+</div>
