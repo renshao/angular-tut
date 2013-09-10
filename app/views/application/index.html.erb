@@ -10,45 +10,29 @@
     </colgroup>
 
 
-    <tr ng-repeat="transaction in transactions" ng-controller="TransactionItemCtrl">
-      <td>
-        <span ng-hide="transaction.editing">
-          {{transaction.description}}
-        </span>
-        <span ng-show="transaction.editing">
-          <input ng-model="transaction.description" class="form-control">
-        </span>
-      </td>
+    <% @transactions.each do |t| %>
 
-      <td>
-        <span ng-hide="transaction.editing">
-          {{transaction.amount}}
-        </span>
-        <span ng-show="transaction.editing">
-          <input ng-model="transaction.amount" type="number" class="form-control">
-        </span>
-      </td>
+      <tr>
+        <td>
+          <%= t.description %>
+        </td>
 
-      <td>
-        <span ng-hide="transaction.editing">
-          {{transaction.category}}
-        </span>
-        <span ng-show="transaction.editing">
-          <select ng-model="transaction.category" class="form-control">
-            <option value="grocery">Grocery</option>
-            <option value="transport">Transport</option>
-            <option value="coffee">Coffee</option>
-          </select>
-        </span>
-      </td>
-      <td>
-        <button ng-click="edit(transaction)" ng-hide="transaction.editing" class="btn btn-default">Edit</button>
-        <button ng-click="save(transaction)" ng-show="transaction.editing" class="btn btn-primary">Save</button>
-        <button ng-click="delete(transaction)" class="btn btn-default">Delete</button>
-      </td>
-    </tr>
+        <td>
+          <%= t.amount %>
+        </td>
+
+        <td>
+          <%= t.category %>
+        </td>
+        <td>
+          <button class="btn btn-default">Edit</button>
+          <button class="btn btn-default">Delete</button>
+        </td>
+      </tr>
+    <% end %>
+
   </table>
 
-  <button ng-click="add()" class="btn btn-primary">Add</button>
+  <button class="btn btn-primary">Add</button>
 
 </div>
