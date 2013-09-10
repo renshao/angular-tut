@@ -1,7 +1,9 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all
-    render json: @transactions
+    transactions = Transaction.all.map do |t|
+      {description: t.description, amount: t.amount, category: t.category}
+    end
+    render json: transactions
   end
 
   def create
