@@ -1,14 +1,22 @@
 <div ng-controller="ExpenseCtrl">
   <h1>My weekly expenses</h1>
 
-  <table>
+  <table class="table">
+    <colgroup>
+      <col width="15%"></col>
+      <col width="5%"></col>
+      <col width="15%"></col>
+      <col width="25%"></col>
+    </colgroup>
+
+
     <tr ng-repeat="transaction in transactions" ng-controller="TransactionItemCtrl">
       <td>
         <span ng-hide="transaction.editing">
           {{transaction.description}}
         </span>
         <span ng-show="transaction.editing">
-          <input ng-model="transaction.description">
+          <input ng-model="transaction.description" class="form-control">
         </span>
       </td>
 
@@ -17,7 +25,7 @@
           {{transaction.amount}}
         </span>
         <span ng-show="transaction.editing">
-          <input ng-model="transaction.amount" type="number">
+          <input ng-model="transaction.amount" type="number" class="form-control">
         </span>
       </td>
 
@@ -26,7 +34,7 @@
           {{transaction.category}}
         </span>
         <span ng-show="transaction.editing">
-          <select ng-model="transaction.category">
+          <select ng-model="transaction.category" class="form-control">
             <option value="grocery">Grocery</option>
             <option value="transport">Transport</option>
             <option value="coffee">Coffee</option>
@@ -34,13 +42,13 @@
         </span>
       </td>
       <td>
-        <button ng-click="edit(transaction)" ng-hide="transaction.editing">Edit</button>
-        <button ng-click="save(transaction)" ng-show="transaction.editing">Save</button>
-        <button ng-click="delete(transaction)">Delete</button>
+        <button ng-click="edit(transaction)" ng-hide="transaction.editing" class="btn btn-default">Edit</button>
+        <button ng-click="save(transaction)" ng-show="transaction.editing" class="btn btn-primary">Save</button>
+        <button ng-click="delete(transaction)" class="btn btn-default">Delete</button>
       </td>
     </tr>
   </table>
 
-  <button ng-click="add()">Add</button>
+  <button ng-click="add()" class="btn btn-primary">Add</button>
 
 </div>
