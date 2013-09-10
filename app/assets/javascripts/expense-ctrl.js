@@ -1,3 +1,3 @@
-function ExpenseCtrl($scope, Transaction) {
+function ExpenseCtrl($scope) {
   
 }
